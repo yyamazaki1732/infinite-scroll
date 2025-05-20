@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+
+const items = [
+  { title: "Item 1", description: "Description for item 1", color: "#f00" },
+  { title: "Item 2", description: "Description for item 2", color: "#0f0" },
+  { title: "Item 3", description: "Description for item 3", color: "#00f" },
+];
+---
+
+<BaseLayout>
+  <main>
+    <h2>subpage</h2>
+    {
+      items.map((item) => (
+        <section class="section" style={`background-color: ${item.color};`}>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </section>
+      ))
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    min-height: 80vh;
+  }
+</style>
