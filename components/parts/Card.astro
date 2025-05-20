@@ -40,7 +40,6 @@ const { class: className, text, ...props } = Astro.props;
   let animating = false;
   const wrap = gsap.utils.wrap(0, sections.length);
 
-  // 初期位置の設定
   gsap.set(outerWrappers, { yPercent: 100 });
   gsap.set(innerWrappers, { yPercent: -100 });
 
@@ -58,12 +57,21 @@ const { class: className, text, ...props } = Astro.props;
 
     if (currentIndex >= 0) {
       gsap.set(sections[currentIndex], { zIndex: 0 });
-      tl.set(sections[currentIndex], { autoAlpha: 0 });
+      tl.to(sections[currentIndex], { autoAlpha: 0 }, 0);
     }
 
-    gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
+    // ✨ここをアニメーション化
+    gsap.set(sections[index], { zIndex: 1 });
 
-    // outer: 親を下から上に、inner: 子を上から下に
+    // sectionのフェードイン
+    tl.fromTo(
+      sections[index],
+      { autoAlpha: 0 },
+      { autoAlpha: 1 },
+      0 // 同時に開始
+    );
+
+    // outer/innerのYスライド
     tl.fromTo(
       [outerWrappers[index], innerWrappers[index]],
       {
@@ -72,7 +80,7 @@ const { class: className, text, ...props } = Astro.props;
       {
         yPercent: 0,
       },
-      0
+      0 // 同時に開始
     );
 
     currentIndex = index;
@@ -88,7 +96,6 @@ const { class: className, text, ...props } = Astro.props;
     preventDefault: true,
   });
 
-  // 初回表示
   gotoSection(0, 1);
 </script>
 
