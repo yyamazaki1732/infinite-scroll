@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"header">;
+const { class: className, ...props } = Astro.props;
+---
+
+<header>
+  <h1>Logo</h1>
+  <nav>
+    <a href="/">top</a>
+    <a href="/about">about</a>
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+  }
+
+  nav a {
+    margin-left: 1rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+</style>
