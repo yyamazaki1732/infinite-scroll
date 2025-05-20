@@ -9,13 +9,22 @@ const { class: className, text, ...props } = Astro.props;
 ---
 
 <div class:list={["div", className, "hidden md:flex flex-col"]} {...props}>
-  <section class="section" style="background-color: #ff6f61;">
+  <section
+    class="section"
+    style="background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);"
+  >
     <div class="outer"><div class="inner">Section 1</div></div>
   </section>
-  <section class="section" style="background-color: #6b5b95;">
+  <section
+    class="section"
+    style="background: linear-gradient(90deg,rgba(175, 184, 6, 1) 0%, rgba(199, 87, 87, 1) 50%, rgba(201, 237, 83, 1) 100%);"
+  >
     <div class="outer"><div class="inner">Section 2</div></div>
   </section>
-  <section class="section" style="background-color: #88b04b;">
+  <section
+    class="section"
+    style="background: linear-gradient(90deg,rgba(6, 21, 184, 1) 0%, rgba(145, 87, 199, 1) 50%, rgba(83, 109, 237, 1) 99%);"
+  >
     <div class="outer"><div class="inner">Section 3</div></div>
   </section>
 </div>
