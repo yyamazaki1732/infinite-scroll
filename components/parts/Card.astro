@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"div"> & {
+  text: string;
+};
+
+const { class: className, text, ...props } = Astro.props;
+---
+
+<div class:list={["div", className, "hidden md:flex flex-col"]} {...props}>
+  <p class:list={["text"]}>
+    {text}
+  </p>
+</div>
+
+<style>
+  .div {
+    aspect-ratio: 1/1;
+    width: min(100%, 300px);
+    height: auto;
+    background-color: palegreen;
+    border-radius: 24px;
+  }
+  :where(.div) {
+    .text {
+      font-size: 2rem;
+    }
+  }
+</style>
