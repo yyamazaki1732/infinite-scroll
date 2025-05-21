@@ -43,7 +43,7 @@ const { class: className, text, ...props } = Astro.props;
   gsap.set(outerWrappers, { yPercent: 100 });
   gsap.set(innerWrappers, { yPercent: -100 });
 
-  function gotoSection(index, direction) {
+  function gotoSection(index: number, direction: number): void {
     index = wrap(index);
     animating = true;
 
@@ -75,7 +75,7 @@ const { class: className, text, ...props } = Astro.props;
     tl.fromTo(
       [outerWrappers[index], innerWrappers[index]],
       {
-        yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor),
+        yPercent: (i: number) => (i ? -100 * dFactor : 100 * dFactor),
       },
       {
         yPercent: 0,
