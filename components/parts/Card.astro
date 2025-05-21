@@ -103,7 +103,10 @@ const { class: className, text, ...props } = Astro.props;
   .div {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 80px);
+    height: calc(100dvh - 80px);
+
+    margin-block-start: 80px;
   }
   :where(.div) {
     .section {
