@@ -66,8 +66,12 @@ const { class: className, text, ...props } = Astro.props;
     // sectionのフェードイン
     tl.fromTo(
       sections[index],
-      { autoAlpha: 0 },
-      { autoAlpha: 1 },
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+      },
       0 // 同時に開始
     );
 
@@ -152,5 +156,6 @@ const { class: className, text, ...props } = Astro.props;
     font-size: 2rem;
     color: white;
     white-space: nowrap;
+    font-size: 56px;
   }
 </style>
