@@ -1,5 +1,47 @@
 ---
 import BaseLayout from "../../components/layouts/BaseLayout.astro";
+import "fullpage.js/dist/fullpage.css";
+
+const sections = [
+  {
+    id: "section1",
+    content: "Some section",
+    hex: "#FF5733",
+  },
+  {
+    id: "section2",
+    content: "Some section",
+    hex: "#33FF57",
+  },
+  {
+    id: "section3",
+    content: "Some section",
+    hex: "#3357FF",
+  },
+  {
+    id: "section4",
+    content: "Some section",
+    hex: "#F1C40F",
+  },
+];
 ---
 
-<BaseLayout> top </BaseLayout>
+<BaseLayout>
+  <ul id="fullpage">
+    {
+      sections.map((section) => (
+        <li
+          class="section"
+          style={`background-color: ${section.hex};`}
+          id={section.id}
+        >
+          {section.content}
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<script>
+  import "public/scripts/infinite-scroll";
+</script>
