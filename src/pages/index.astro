@@ -5,56 +5,53 @@ import "fullpage.js/dist/fullpage.css";
 const sections = [
   {
     id: "section1",
-    content: "Some section",
+    content: "「まだ、あきらめてないだろ？」篇",
     hex: "#FF5733",
   },
   {
     id: "section2",
-    content: "Some section",
+    content: "PERFECT WASH",
     hex: "#33FF57",
   },
   {
     id: "section3",
-    content: "Some section",
+    content: "BLACK PLUS SHAMPOO",
     hex: "#3357FF",
   },
   {
     id: "section4",
-    content: "Some section",
+    content: "BODY SOAP PERFECT WASH",
     hex: "#F1C40F",
   },
   {
     id: "section5",
-    content: "Some section",
+    content: "DEODORANT BODY MIST",
     hex: "#8E44AD",
   },
   {
     id: "section6",
-    content: "Some section",
+    content: "LINE UP",
     hex: "#E67E22",
-  },
-  {
-    id: "section7",
-    content: "Some section",
-    hex: "#2ECC71",
   },
 ];
 ---
 
 <BaseLayout>
-  <ul id="fullpage">
+  <div data-fullpage-container>
     {
       sections.map((section) => (
-        <li
+        <div
           class="section"
           style={`background-color: ${section.hex};`}
           id={section.id}
         >
-          {section.content}
-        </li>
+          <section class:list={["inner"]}>
+            <h2 class:list={["title"]}>{section.content}</h2>
+          </section>
+        </div>
       ))
     }
-  </ul>
+  </div>
 </BaseLayout>
 
 <script>
@@ -62,9 +59,28 @@ const sections = [
 </script>
 
 <style>
-  :global(.fp-arrow) {
-    width: 24px;
-    height: 10px;
-    background-color: rebeccapurple;
+  :where([data-fullpage-container]) {
+    .section {
+      height: 100%;
+      width: 100%;
+    }
+    :where(.section) {
+      .inner {
+        --pad-i: 2rem;
+        padding-inline: var(--pad-i);
+        height: 100%;
+        width: 100%;
+        display: grid;
+        place-items: center;
+      }
+      :where(.inner) {
+        .title {
+          font-size: 2rem;
+          color: white;
+          opacity: 0;
+          transform: translateY(100%);
+        }
+      }
+    }
   }
 </style>
