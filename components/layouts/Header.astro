@@ -8,5 +8,20 @@
     "fixed top-0 left-0 w-screen flex justify-between items-center z-(--my-z-index-header) min-h-(--my-header-height)",
   ]}
 >
-  <h2 class:list={["title", "h-max"]}>Logo Header</h2>
+  <h2 class:list={["title", "h-max"]}>
+    <a href="/"> LOGO </a>
+  </h2>
 </header>
+
+<style>
+  .header {
+    background-color: var(--my-header-bg-color);
+    color: var(--my-header-text-color);
+    padding: 3rem 1rem;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+</style>
