@@ -40,10 +40,10 @@ new fullpage("[data-fullpage-container]", {
 
   continuousVertical: true,
 
-onLeave(origin, destination, direction) {
+onLeave(_, destination) {
   const h2 = destination.item.querySelector("h2");
-  console.log("onLeave", h2);
   if (h2) {
+    h2.getAnimations().forEach(animation => animation.cancel());
     h2.animate(
       [
         { transform: 'translateY(100px)', opacity: 0 },
